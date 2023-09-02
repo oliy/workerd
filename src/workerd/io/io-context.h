@@ -885,6 +885,8 @@ public:
 
   void writeLogfwdr(uint channel, kj::FunctionParam<void(capnp::AnyPointer::Builder)> buildMessage);
 
+  bool ratelimit(uint channel, uint64_t ns, uint64_t id);
+
   jsg::JsObject getPromiseContextTag(jsg::Lock& js);
 
 private:

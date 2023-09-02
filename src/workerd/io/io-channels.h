@@ -171,6 +171,9 @@ public:
   virtual kj::Promise<void> writeLogfwdr(
       uint channel, kj::FunctionParam<void(capnp::AnyPointer::Builder)> buildMessage) = 0;
 
+  virtual bool ratelimit(uint64_t ns, uint64_t it) = 0;
+  // count/check rate limit
+
   // Stub for a remote actor. Allows sending requests to the actor. Multiple requests may be
   // sent, and they will be delivered in the order they are sent (e-order). This is an I/O type
   // so it is only valid within the `IoContext` where it was created.

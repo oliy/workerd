@@ -1704,6 +1704,10 @@ private:
     co_return;
   }
 
+  bool ratelimit(uint64_t ns, uint64_t it) override {
+    return true;
+  }
+
   kj::Own<ActorChannel> getGlobalActor(uint channel, const ActorIdFactory::ActorId& id,
       kj::Maybe<kj::String> locationHint, ActorGetMode mode, SpanParent parentSpan) override {
     JSG_REQUIRE(mode == ActorGetMode::GET_OR_CREATE, Error,

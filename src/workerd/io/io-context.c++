@@ -1420,6 +1420,11 @@ void IoContext::writeLogfwdr(uint channel,
       .attach(registerPendingEvent()));
 }
 
+bool IoContext::ratelimit(uint channel, uint64_t ns, uint64_t bucket) {
+  // todo convert this to return bool back
+  return getIoChannelFactory().ratelimit(ns, bucket);
+}
+
 void IoContext::requireCurrentOrThrowJs() {
   JSG_REQUIRE(isCurrent(),
       Error,
